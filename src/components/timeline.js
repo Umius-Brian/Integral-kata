@@ -1,18 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
 
-export default function Timeline() {
+export default function Timeline({user}) {
   const [postLists, setpostLists] = useState([]);
   const [description, setDescription] = useState('');
 
+  // retrieve posts from db
   async function dbUsers() {
-    const result = await axios(`http://localhost:5000/posts`);
+    const id = user;
+    const result = await axios(`http://localhost:5000/posts/${id}`);
     setpostLists(result.data);
   }
 
-  const addpost = async e => {
-    
+  useEffect(() => { dbUsers() }, [user]);
+
+  // add post to db
+  const addPost = async e => {
+    e.preventDefault();
+
+    const body = {
+      username: user,
+      description,
+      date: new Date()
+    }
+
+    const addPostToDB = await axios.post('http://localhost:5000/posts/add', body);
+
+    setpostLists([
+      ...postLists,
+      {
+        id: postLists.length,
+        post: description,
+        date: new Date()
+      }
+    ]);
+    setDescription('');
   }
+
   return(
     <div>
       <h3>Create New Post</h3>
