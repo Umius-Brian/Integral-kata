@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Login feature to keep track of all users
 export default function LoginUser({handleLogin}) {
   const [usersData, setUsersData] = useState([]);
 

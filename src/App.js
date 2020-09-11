@@ -19,6 +19,8 @@ export default function App() {
   const handleLogout = () => {
     setLoginStatus('');
   }
+
+  // pass props via Router to persist login status
   return (
     <Router>
       <div className="container">
@@ -30,10 +32,14 @@ export default function App() {
             <LoginUser handleLogin={handleLogin} />
           }
         <br />
-        <Route path="/timeline" component={Timeline} />
-        <Route path="/wall" component={Wall} />
-        <Route path="/user" component={CreateUser} />
-        <Route path="/followers" component={Followers} />
+        <Route path="/timeline" render={() =>
+          <Timeline user={loginStatus}/>} />
+        <Route path="/wall" render={() =>
+          <Wall user={loginStatus}/>} />
+        <Route path="/user" render={() =>
+          <CreateUser user={loginStatus}/>} />
+        <Route path="/followers" render={() =>
+          <Followers user={loginStatus}/>} />
       </div>
     </Router>
   );

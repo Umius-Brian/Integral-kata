@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Retrieve followers from users
 export default function Followers() {
   const [followers, setFollowers] = useState([]);
   const [username, setUsername] = useState('');
@@ -14,6 +15,7 @@ export default function Followers() {
 
   useEffect(() => { dbUsers() }, []);
 
+  // add follower to db by user
   const addFollower = async e => {
     e.preventDefault();
 
@@ -31,7 +33,6 @@ export default function Followers() {
         id: followers.length,
         name: username,
         post: description,
-        date: description,
         date: new Date()
       }
     ])

@@ -19,7 +19,7 @@ router.route('/add').post((req, res) => {
   });
 
   newFollowers.save()
-    .then() => res.json('Followers added.')
+    .then(() => res.json('Followers added.'))
     .catch(err => res.status(400).json('Error: ' + err));
 })
 

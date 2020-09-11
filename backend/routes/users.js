@@ -4,8 +4,7 @@ let User = require('../models/user.model.js');
 router.route('/').get((req, res) => {
   User.find()
     .then(users => {
-      console.log('users here', users)
-      res.locals.usersData = users
+      res.locals.usersData = users;
       res.status(200).json(res.locals.usersData)
     })
     .catch(err => res.status(400).json('Error: ' + err));
