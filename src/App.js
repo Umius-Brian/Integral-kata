@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -10,12 +10,26 @@ import CreateUser from './components/create-user';
 import Followers from './components/followers';
 
 export default function App() {
+  const [loginStatus, setLoginStatus] = useState('');
+
+  const handleLogin = user => {
+    setLoginStatus(user);
+  }
+
+  const handleLogout = () => {
+    setLoginStatus('');
+  }
   return (
     <Router>
       <div className="container">
         <Navbar />
-        <br />
-        <Route path="/" exact component={LoginUser} />
+          {loginStatus ? <>
+            <p>Logged in {loginStatus}</p>
+            <button onClick={handleLogout}>Logout</button>
+            </> :
+            <LoginUser handleLogin={handleLogin} />
+          }
+        <br /> 
         <Route path="/timeline" component={Timeline} />
         <Route path="/wall" component={Wall} />
         <Route path="/user" component={CreateUser} />
