@@ -24,12 +24,12 @@ export default function App() {
       <div className="container">
         <Navbar />
           {loginStatus ? <>
-            <p>Logged in {loginStatus}</p>
-            <button onClick={handleLogout}>Logout</button>
+            <p>User: {loginStatus}</p>
+            <button className="btn btn-light btn-sm" onClick={handleLogout}>Logout</button>
             </> :
             <LoginUser handleLogin={handleLogin} />
           }
-        <br /> 
+        <br />
         <Route path="/timeline" component={Timeline} />
         <Route path="/wall" component={Wall} />
         <Route path="/user" component={CreateUser} />

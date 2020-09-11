@@ -13,11 +13,11 @@ export default function LoginUser({handleLogin}) {
 
   return(
     <>
-    <h1>Login User:</h1>
+    <h2>Login User:</h2>
       <ul>
         {usersData.map((user, index) => (
           <li key={index}>
-            <button onClick={() => {
+            <button className="btn btn-light btn-sm" onClick={() => {
               handleLogin(user.username)
             }} >{user.username}</button>
           </li>
