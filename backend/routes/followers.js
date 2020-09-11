@@ -1,9 +1,9 @@
 const router = require('express').Router();
-let Post = require('../models/post.model.js');
+let Followers = require('../models/followers.model.js');
 
 router.route('/').get((req, res) => {
-  Post.find()
-    .then(post => res.json(posts))
+  Followers.find()
+    .then(follower => res.json(follower))
     .catch(err => res.status(400).json('Error: ' + err));
 })
 
@@ -12,15 +12,15 @@ router.route('/add').post((req, res) => {
   const description = req.body.description;
   const date = Date.parse(req.body.date);
 
-  const newPost = new Post({
+  const newFollowers = new Followers({
     username,
     description,
     date
   });
 
-  newPost.save()
-    .then(() => res.json('Post added'))
-    .catch(err => res.status(400).json('Error: ') + err);
+  newFollowers.save()
+    .then() => res.json('Followers added.')
+    .catch(err => res.status(400).json('Error: ' + err));
 })
 
 module.exports = router;

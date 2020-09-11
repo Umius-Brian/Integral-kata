@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const followersSchema = new Schema({
   username: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: Date, required: true },
@@ -10,6 +10,6 @@ const postSchema = new Schema({
   timestamps: true,
 })
 
-const Post = mongoose.model('Post', postSchema);
+const Followers = mongoose.model('Followers', followersSchema);
 
-module.exports = Post;
+module.exports = Followers;
