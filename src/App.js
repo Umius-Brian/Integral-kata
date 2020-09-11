@@ -9,7 +9,7 @@ import Wall from './components/wall';
 import CreateUser from './components/create-user';
 import Followers from './components/followers';
 
-function App() {
+export default function App() {
   return (
     <Router>
       <div className="container">
@@ -17,7 +17,7 @@ function App() {
         <br />
         <Route path="/" exact component={LoginUser} />
         <Route path="/timeline" component={Timeline} />
-        <Route path="wall" component={Wall} />
+        <Route path="/wall" component={Wall} />
         <Route path="/user" component={CreateUser} />
         <Route path="/followers" component={Followers} />
       </div>
@@ -25,4 +25,3 @@ function App() {
   );
 }
 
-export default App;
